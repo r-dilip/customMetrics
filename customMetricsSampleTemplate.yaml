@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: custommetricsample
+    aadpodidbinding: dilipr-pod-id
+  name: custommetricsample
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: custommetricsample
+  template:
+    metadata:
+      labels:
+        app: custommetricsample
+        aadpodidbinding: dilipr-pod-id
+      name: custommetricsample
+    spec:
+      containers:
+      - name: custommetricsample
+        image: rdilip83/custommetrics:vIMG_VERSION
+        env:
+        - name: AZURE_KEYVAULT_NAME
+          value: keyvaultk8s
+        - name: AZURE_KEYVAULT_SECRET_NAME
+          value: mySecret
+        - name: AZURE_KEYVAULT_SECRET_VERSION
+          value: a1b2456e4ffc45be9239611f357a4321
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: custommetricsample
+  namespace: default
+spec:
+  ports:
+  - port: 80
+    targetPort: 8080
+  selector:
+    app: custommetricsample
+  type: LoadBalancer

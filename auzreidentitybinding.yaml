@@ -1,0 +1,7 @@
+apiVersion: "aadpodidentity.k8s.io/v1"
+kind: AzureIdentityBinding
+metadata:
+  name: dilipr-pod-id-binding
+spec:
+  AzureIdentity: dilipr-pod-id
+  Selector: dilipr-pod-id

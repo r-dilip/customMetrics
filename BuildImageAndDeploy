@@ -1,0 +1,6 @@
+docker build -t rdilip83/custommetrics:v$($version) . ; docker push rdilip83/custommetrics:v$($version); $version = $version + 1; $version
+
+(Get-Content custommetricsSampleTemplate.yaml).replace('IMG_VERSION', $version) | Set-Content custommetricsSample.yaml
+
+kd .\custommetricsSample.yaml; ka .\custommetricsSample.yaml
+

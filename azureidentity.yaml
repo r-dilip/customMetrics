@@ -1,0 +1,8 @@
+apiVersion: "aadpodidentity.k8s.io/v1"
+kind: AzureIdentity
+metadata:
+  name: dilipr-pod-id
+spec:
+  type: 0
+  ResourceID: /subscriptions/72c8e8ca-dc16-47dc-b65c-6b5875eb600a/resourcegroups/acs-engine-test/providers/Microsoft.ManagedIdentity/userAssignedIdentities/dilipr-pod-id
+  ClientID: 25a88763-a64f-44bb-9999-20dc12701e83
