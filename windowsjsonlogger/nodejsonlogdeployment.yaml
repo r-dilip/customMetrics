@@ -1,0 +1,33 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+ name: diliprnodejsonlog
+ labels:
+  VishwadeploymentLabel1: d1
+  VishwadeploymentLabel2: d2
+spec:
+ replicas: 5
+ selector:
+  matchLabels:
+   app: diliprnodejsonlog
+ template:
+  metadata:
+   labels:
+    VishwaPodLabel1: p1
+    VishwaPodLabel2: p2
+    app: diliprnodejsonlog
+  spec: 
+   containers:
+    - name: diliprnodejsonlogpodapp
+      image: rdilip83/jsonlogger:v12
+      resources:
+        limits:
+         cpu: 20m
+         memory: 60Mi
+        requests:
+         cpu: 10m
+         memory: 30Mi
+
+  
+ 
+     
